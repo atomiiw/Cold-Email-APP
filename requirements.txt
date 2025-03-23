@@ -1,7 +1,7 @@
 streamlit==1.43.2
 pandas==2.2.2
-langchain==0.3.21
-langchain-community==0.0.33
+langchain
+langchain-community
 PyPDF2==3.0.1
 python-docx==1.1.2
 python-dotenv==1.0.1
