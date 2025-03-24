@@ -36,6 +36,9 @@ if st.session_state.page == 1:
 elif st.session_state.page == 2:
     st.title("Step 2: Processing")
     try:
+        # Reset file pointers before reading CSV files to ensure we read from the beginning
+        st.session_state.company_csv.seek(0)
+        st.session_state.contacts_csv.seek(0)
         accounts = pd.read_csv(st.session_state.company_csv)
         contacts = pd.read_csv(st.session_state.contacts_csv)
     except Exception as e:
