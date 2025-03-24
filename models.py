@@ -1,14 +1,12 @@
 from langchain.chat_models import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from dotenv import load_dotenv
+import streamlit as st
 import tomllib
 import os
 
-with open("secrets.toml", "rb") as f:
-    config = tomllib.load(f)
-
-openai_api_key = config["env"]["OPENAI_API_KEY"]
-anthropic_api_key = config["env"]["ANTHROPIC_API_KEY"]
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+anthropic_api_key = st.secrets["ANTHROPIC_API_KEY"]
 
 llm = ChatOpenAI(openai_api_key = openai_api_key, 
                  temperature = 0.2,
