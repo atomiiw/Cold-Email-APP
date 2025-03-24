@@ -5,8 +5,8 @@ import streamlit as st
 import tomllib
 import os
 
-openai_api_key = st.secrets["OPENAI_API_KEY"]
-anthropic_api_key = st.secrets["ANTHROPIC_API_KEY"]
+openai_api_key = st.secrets["env"]["OPENAI_API_KEY"]
+anthropic_api_key = st.secrets["env"]["ANTHROPIC_API_KEY"]
 
 llm = ChatOpenAI(openai_api_key = openai_api_key, 
                  temperature = 0.2,
