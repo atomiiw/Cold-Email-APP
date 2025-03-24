@@ -117,7 +117,7 @@ elif st.session_state.page == 2:
             st.rerun()
 
 # -------------------------------
-# Page 3: Email Generation and CSV Download
+# Page 3: Email Generation
 # -------------------------------
 elif st.session_state.page == 3:
     st.title("Step 3: Generating Emails")
@@ -132,20 +132,36 @@ elif st.session_state.page == 3:
     
     with st.spinner("Producing emails..."):
         email_list = generate_emails(accounts, contacts, resume_text)
+        # Save the generated emails for Step 4.
+        st.session_state.email_list = email_list
     
-    st.write("Emails generated successfully!")
+    # Transition to Step 4 immediately after generation.
+    st.session_state.page = 4
+    st.experimental_rerun()
+
+
+# -------------------------------
+# Page 4: Email Ready (CSV Download)
+# -------------------------------
+elif st.session_state.page == 4:
+    st.title("Step 4: Email Ready")
     
+    email_list = st.session_state.email_list
     # Convert the email list to a DataFrame and reorder columns.
     email_df = pd.DataFrame(email_list)
     email_df = email_df.rename(columns={"Website": "company website"})
-
-    # Ensure the DataFrame has these columns in the desired order:
-    desired_order = ["Company Name", "company website", "Recipient Title", "Recipient Name", "Recipient Email", "Subject", "Email Content"]
+    
+    desired_order = [
+        "Company Name", "company website", "Recipient Title", 
+        "Recipient Name", "Recipient Email", "Subject", "Email Content"
+    ]
     email_df = email_df[[col for col in desired_order if col in email_df.columns]]
-
+    
+    # Reset index so the leftmost numbering is sequential.
+    email_df = email_df.sort_values(by=["Company Name"]).reset_index(drop=True)
+    
     st.dataframe(email_df)
-
-    # Create CSV for download.
+    
     csv = email_df.to_csv(index=False).encode("utf-8")
     download_clicked = st.download_button(
         label="Download Email CSV",
@@ -153,10 +169,9 @@ elif st.session_state.page == 3:
         file_name="emails.csv",
         mime="text/csv"
     )
-
-    # After download, explicitly ensure the page remains at step 3.
+    
+    # When download is clicked, remain on Step 4.
     if download_clicked:
-        st.session_state.page = 3
+        st.session_state.page = 4
 
     st.write("Process complete!")
-
