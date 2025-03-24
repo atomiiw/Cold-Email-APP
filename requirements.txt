@@ -1,6 +1,7 @@
 streamlit==1.43.2
 pandas==2.2.2
 langchain
+openai
 langchain-community
 langchain_anthropic
 PyPDF2==3.0.1
