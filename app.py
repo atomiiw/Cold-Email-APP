@@ -69,24 +69,36 @@ elif st.session_state.page == 2:
             websites_for_reference.append(company['Website'])
     
     additional_info = {}
+    error_placeholders = {}
+
     if more_info_needed_for:
         st.write("Provide additional details (at least 30 words each) for the following companies:")
+        # Loop over companies and create both text areas and error placeholders
         for idx, company in enumerate(more_info_needed_for):
             label = f"{company} ({websites_for_reference[idx]})"
             additional_info[company] = st.text_area(label, key=company)
-        
+            error_placeholders[company] = st.empty()  # Placeholder for potential error message
+
         if st.button("Submit Additional Info"):
             all_valid = True
+            # Validate each company's input
             for company, info in additional_info.items():
                 word_count = len(re.split(r"\s+", info.strip()))
                 if word_count < 30:
-                    st.error(f"Additional info for {company} is too short (only {word_count} words).")
+                    error_placeholders[company].error(
+                        f"Additional info for {company} is too short (only {word_count} words). Please provide at least 30 words."
+                    )
                     all_valid = False
+                else:
+                    # Clear error message if input meets requirement
+                    error_placeholders[company].empty()
+            
             if all_valid:
                 # Append additional info to the company's short description
                 for company in more_info_needed_for:
-                    accounts.loc[accounts['Company'] == company, 'Short Description'] = \
+                    accounts.loc[accounts['Company'] == company, 'Short Description'] = (
                         accounts.loc[accounts['Company'] == company, 'Short Description'] + " " + additional_info[company]
+                    )
                 st.session_state.accounts = accounts
                 st.session_state.contacts = contacts
                 st.session_state.resume_text = resume_text
