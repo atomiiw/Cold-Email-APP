@@ -29,7 +29,7 @@ if st.session_state.page == 1:
             st.session_state.resume_file = resume_file
             st.session_state.page = 2
             st.rerun()
-
+            
 # -------------------------------
 # Page 2: Processing and Additional Info
 # -------------------------------
