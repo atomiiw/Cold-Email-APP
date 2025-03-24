@@ -106,7 +106,7 @@ elif st.session_state.page == 2:
                 st.session_state.contacts = contacts
                 st.session_state.resume_text = resume_text
                 st.session_state.page = 3
-                st.experimental_rerun()
+                st.rerun()
     else:
         st.write("All companies have sufficient information.")
         st.session_state.accounts = accounts
@@ -114,7 +114,7 @@ elif st.session_state.page == 2:
         st.session_state.resume_text = resume_text
         if st.button("Next"):
             st.session_state.page = 3
-            st.experimental_rerun()
+            st.rerun()
 
 # -------------------------------
 # Page 3: Email Generation and CSV Download
