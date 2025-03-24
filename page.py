@@ -10,12 +10,13 @@ def page1(container):
     with container:
         st.title("Step 1: Upload Files")
         st.write("Please upload the following:")
-        company_csv = st.file_uploader("Upload Company CSV", type="csv")
-        contacts_csv = st.file_uploader("Upload Contacts CSV", type="csv")
-        resume_file = st.file_uploader("Upload Resume (docx or pdf)", type=["docx", "pdf"])
+
+        company_csv = st.file_uploader("Upload Company CSV", type="csv", key="upload_company_csv")
+        contacts_csv = st.file_uploader("Upload Contacts CSV", type="csv", key="upload_contacts_csv")
+        resume_file = st.file_uploader("Upload Resume (docx or pdf)", type=["docx", "pdf"], key="upload_resume_file")
         
         if company_csv and contacts_csv and resume_file:
-            if st.button("Next"):
+            if st.button("Next", key="step1_next"):
                 st.session_state.company_csv = company_csv
                 st.session_state.contacts_csv = contacts_csv
                 st.session_state.resume_file = resume_file
