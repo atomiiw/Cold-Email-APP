@@ -12,8 +12,8 @@ def page1(container):
         st.write("Please upload the following:")
 
         company_csv = st.file_uploader("Upload Company CSV", type="csv", key="upload_company_csv")
-        contacts_csv = st.file_uploader("Upload Contacts CSV", type="csv", key="upload_contacts_csv")
         resume_file = st.file_uploader("Upload Resume (docx or pdf)", type=["docx", "pdf"], key="upload_resume_file")
+        contacts_csv = st.file_uploader("Upload Contacts CSV", type="csv", key="upload_contacts_csv")
         
         if company_csv and contacts_csv and resume_file:
             if st.button("Next", key="step1_next"):
