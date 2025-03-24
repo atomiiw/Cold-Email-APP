@@ -29,7 +29,7 @@ if st.session_state.page == 1:
             st.session_state.resume_file = resume_file
             st.session_state.page = 2
             st.rerun()
-            
+
 # -------------------------------
 # Page 2: Processing and Additional Info
 # -------------------------------
@@ -67,11 +67,6 @@ elif st.session_state.page == 2:
         if len(words) < 30:
             more_info_needed_for.append(company['Company'])
             websites_for_reference.append(company['Website'])
-    
-    st.write("Companies that need more information:")
-    st.write(more_info_needed_for)
-    st.write("Reference websites:")
-    st.write(websites_for_reference)
     
     additional_info = {}
     if more_info_needed_for:
