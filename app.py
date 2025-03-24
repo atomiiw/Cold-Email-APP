@@ -28,8 +28,8 @@ if st.session_state.page == 1:
             st.session_state.contacts_csv = contacts_csv
             st.session_state.resume_file = resume_file
             st.session_state.page = 2
-            st.experimental_rerun()
-
+            st.rerun()
+            
 # -------------------------------
 # Page 2: Processing and Additional Info
 # -------------------------------
