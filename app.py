@@ -138,17 +138,13 @@ elif st.session_state.page == 3:
     # Convert the email list to a DataFrame and reorder columns.
     email_df = pd.DataFrame(email_list)
     email_df = email_df.rename(columns={"Website": "company website"})
-    
+
     # Ensure the DataFrame has these columns in the desired order:
     desired_order = ["Company Name", "company website", "Recipient Title", "Recipient Name", "Recipient Email", "Subject", "Email Content"]
     email_df = email_df[[col for col in desired_order if col in email_df.columns]]
-    
-    # For companies with multiple entries, prioritize those with a filled "Recipient Name".
-    email_df["recipient_priority"] = email_df["Recipient Name"].apply(lambda x: 0 if x.strip() else 1)
-    email_df = email_df.sort_values(by=["Company Name", "recipient_priority"]).drop(columns=["recipient_priority"])
-    
+
     st.dataframe(email_df)
-    
+
     # Create CSV for download.
     csv = email_df.to_csv(index=False).encode("utf-8")
     st.download_button(
@@ -157,5 +153,6 @@ elif st.session_state.page == 3:
         file_name="emails.csv",
         mime="text/csv"
     )
-    
+
     st.write("Process complete!")
+
