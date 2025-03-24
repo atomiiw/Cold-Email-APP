@@ -147,12 +147,16 @@ elif st.session_state.page == 3:
 
     # Create CSV for download.
     csv = email_df.to_csv(index=False).encode("utf-8")
-    st.download_button(
+    download_clicked = st.download_button(
         label="Download Email CSV",
         data=csv,
         file_name="emails.csv",
         mime="text/csv"
     )
+
+    # After download, explicitly ensure the page remains at step 3.
+    if download_clicked:
+        st.session_state.page = 3
 
     st.write("Process complete!")
 
