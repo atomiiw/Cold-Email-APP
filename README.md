@@ -44,6 +44,12 @@ You can then copy and paste the content directly into your emails.
 
 ---
 
+## 🧭 Demo Preview
+
+screenshots/demo.png
+
+---
+
 ## 🔮 What’s Next
 
 Future versions will:
