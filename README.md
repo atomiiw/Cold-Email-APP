@@ -1,4 +1,4 @@
-# 🎯 Cold Email Automation Tool for Summer Internship Outreach
+# 🧊 Cold Email Automation Tool for Summer Internship Outreach
 
 This is a **Streamlit-based AI tool** that helps students generate high-quality, personalized cold emails for summer internship outreach—quickly and effectively.
 
@@ -7,7 +7,7 @@ This is a **Streamlit-based AI tool** that helps students generate high-quality,
 
 ---
 
-## 📂 What You Need to Get Started
+## What You Need to Get Started
 
 To use the app, you'll need to upload:
 
@@ -19,7 +19,7 @@ To use the app, you'll need to upload:
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 This app is powered by **LangChain** and a set of **specialized AI agents**, each handling a specific part of the cold email creation process:
 
@@ -33,7 +33,7 @@ This app is powered by **LangChain** and a set of **specialized AI agents**, eac
 
 ---
 
-## 📤 Output
+## Output
 
 The final result is a **downloadable CSV** containing:
 
@@ -44,13 +44,13 @@ You can then copy and paste the content directly into your emails.
 
 ---
 
-## 🧭 Demo Preview
+## Demo Preview
 
 <img src="screenshots/demo.png" width="75%">
 
 ---
 
-## 🔮 What’s Next
+## What’s Next
 
 Future versions will:
 
