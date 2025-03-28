@@ -46,7 +46,7 @@ You can then copy and paste the content directly into your emails.
 
 ## 🧭 Demo Preview
 
-screenshots/demo.png
+<img src="screenshots/demo.png" width="75%">
 
 ---
 
